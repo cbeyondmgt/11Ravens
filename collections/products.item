@@ -1,0 +1,154 @@
+{.section item}
+  <div id="productWrapper">
+    <!-- This displays all images/videos associated with the product. Style this accordingly. -->
+    <div id="productSlideshow">
+      {.repeated section items}
+        {.image?}
+          <img {@|image-meta} />
+        {.end}
+        {.video?}
+          {@|video}
+        {.end}
+      {.end}
+    </div>
+
+    <!-- This shows the status (sold out/on sale), price, and description (excerpt) text -->
+    <div id="productDetails">
+      {@|product-status}
+		<div id="pLeft">
+      <h1 class="product-title">{title}</h1>
+    </div>
+		<div id="pCtr">
+
+      {.excerpt?}
+        <div class="product-excerpt">  <script>
+        	//alert('section being worked on');
+        </script>
+          {excerpt}
+        </div>
+      {.end}
+      	</div>
+      	<div id="pRight">
+ 			{@|product-price}
+      		{@|product-checkout}
+      	</div>
+    </div>
+
+    <!-- This displays any text/blocks added to the Additional Info tab -->
+    {.section body}
+    <div class="product-description">
+      {@}
+    </div>
+  </div>
+
+  {.end}
+
+  <script>
+  	function csfc(x){
+     //alert(x+":"+window.location.pathname);
+  		//alert(x+":"+window.location.pathname);
+
+		//**********************	EDIT COLOR CHOICE IMAGES BELOW HERE ml****************************/
+
+  		var colorChoice=["","https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574dc18fc6fc084093c6b38f/1464713617839/arclight-bamboo-iHERO.jpg",
+  		"https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574dc1912eeb8106009ffab7/1464713618734/Arclight-cocobolo-HERO-1.jpg",
+  		"https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574dc18f2eeb8106009ffa8f/1464713617797/arclight-teak-HERO+copy.jpg",
+  		"https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574dc1902eeb8106009ffab1/1464713617925/arclight-navy-HERO+copy.jpg",
+  		"https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574dc190c6fc084093c6b394/1464713618170/arclight-padauk-HERO.jpg",
+  		"https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/57586ddcb6aa606cce44e939/1465413168304/crop-arclight-billiards-feature.jpg",
+  		"https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/57586ddbe321408a3387eff7/1465413087606/crop-arclight-billiards-teak.jpg"];
+
+		//**********************	EDIT COLOR CHOICE IMAGES ABOVE HERE ****************************/
+		//**********************	EDIT COLOR CHOICE NAMES BELOW HERE ****************************/
+
+  		var colorName=["","Bamboo","Cocobolo","Teak","Navy","Padauk","Bamboo","Teak"];
+
+ 		//**********************	EDIT COLOR CHOICE NAMES & IMAGES ABOVE HERE ****************************/
+  		$("#productSlideshow img").attr('src',colorChoice[x]);
+  		$("#color_cont img").css({'border':'none'});
+  		$("#clr-"+x+" img").css({"border":"1px solid #ffffff"});
+  		$("#colorDesc").text(colorName[x]);
+  	}
+
+  jQuery(document).ready(function($){
+
+    //	alert('script loaded');
+  	var viewportWidth = jQuery(window).width();
+
+  	if (viewportWidth<700) {
+  		if (window.location.pathname==="/shop/arclight-table-tennis") {
+  			$("#productSlideshow img").attr('src','https://static1.squarespace.com/static/56f55724d210b839ae597438/574d4242b654f95fce4faf01/574d429760b5e9b0a785be29/1464681114096/arclight-padauk-table-tennis.gif');
+  		}
+  		if (window.location.pathname==="/shop/avettore-orange-table-tennis") {
+  			$("#productSlideshow img").attr('src','https://static1.squarespace.com/static/56f55724d210b839ae597438/574d4242b654f95fce4faf01/574d42c92b8ddef6b3513ab8/1464734992912/avettore-walnut-dining-table.gif');
+  		}
+  		if (window.location.pathname==="/shop/hampton-table-tennis") {
+  			$("#productSlideshow img").attr('src','https://static1.squarespace.com/static/56f55724d210b839ae597438/574d4242b654f95fce4faf01/574d430f2eeb81625a01d17f/1464681234036/hampton-white-table-tennis.gif');
+  		}
+  		if (window.location.pathname==="/shop/raven-table-tennis") {
+  			$("#productSlideshow img").attr('src','https://static1.squarespace.com/static/56f55724d210b839ae597438/574d4242b654f95fce4faf01/574d433e40261d75974eb3ef/1464734907618/raven-macassar-table-tennis.gif');
+  		}
+  		if (window.location.pathname==="/shop/stealth-table-tennis") {
+  			$("#productSlideshow img").attr('src','https://static1.squarespace.com/static/56f55724d210b839ae597438/574d4242b654f95fce4faf01/574d4389ab48de41ef99d018/1464681356195/stealth-billiards-side.gif');
+  		}
+  		if (window.location.pathname==="/shop/theseus-table-tennis") {
+  			$("#productSlideshow img").attr('src','https://static1.squarespace.com/static/56f55724d210b839ae597438/574d4242b654f95fce4faf01/574d43d22eeb81625a01d3e1/1464681428903/theseus-bamboo-table-tennis.gif');
+  		}
+  		if (window.location.pathname==="/shop/theseus-shuffleboard") {
+  			$("#productSlideshow img").attr('src','https://static1.squarespace.com/static/56f55724d210b839ae597438/574d4242b654f95fce4faf01/574d4413b6aa60d843ac8bfa/1464681494472/theseus-white-shufflebard.gif');
+  		}
+  	}
+
+  		var p1=$( "#pCtr .product-excerpt").html().split("<h2");
+
+  	//	alert("p="+p1[0]);
+  		$("#pLeft").append(p1[0]);
+  		$(".product-excerpt").html("<h2"+p1[1]);
+
+  		if (viewportWidth>700){
+   			$("#pCtr").css('height',$("#productDetails").height());
+  		}
+  	//	alert($(".product-price .sqs-money-native").text())
+  		var pPrice=$(".product-price .sqs-money-native").text();
+  		if (pPrice==="0.00") {
+  			$(".product-price").css('display','none');
+
+      		var lmButton='<div class="sqs-block-button"><div class="sqs-block-button-container--center">';
+
+			/************************** EDIT BELOW HERE FOR PRODUCT COLOR *********************************/
+  			if (window.location.pathname==="/shop/arclight-table-tennis") {
+
+    				var CC='<div id="color_cont">';
+  					CC+='<div id="colorDesc">Bamboo</div>&nbsp;';
+      				CC+='<a id="clr-1" href="javascript:csfc(1);"><img style="border:1px solid #ffffff;" src="https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574d295f9f726665ee370a3e/1464674657047/bamboo.jpg"></a>';
+      				CC+='<a id="clr-2" href="javascript:csfc(2);"><img src="https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574d29939f726665ee370b30/1464674709642/cocobolo.jpg"></a>';
+      				CC+='<a id="clr-3" href="javascript:csfc(3);"><img src="https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574d37082fe1312abdefefe9/1464678154126/teak.jpg"></a>';
+      				CC+='<a id="clr-4" href="javascript:csfc(4);"><img src="https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574dc302356fb01638077c5b/1464713987698/Navy-color.jpg"></a>';
+      				CC+='<a id="clr-5" href="javascript:csfc(5);"><img src="https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574d29d786db431f094cfaa4/1464674777533/padauk.jpg"></a>';
+      				CC+='</div>';
+
+  			  	var lmButton=CC+'<div class="sqs-block-button"><div class="sqs-block-button-container--center">';
+  			}
+
+  			if (window.location.pathname==="/shop/arclight-billiards-table") {
+      				var CC='<div id="color_cont">';
+   					CC+='<div id="colorDesc">Bamboo</div>&nbsp;';
+       				CC+='<a id="clr-1" href="javascript:csfc(6);"><img style="border:1px solid #ffffff;" src="https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574d295f9f726665ee370a3e/1464674657047/bamboo.jpg"></a>';
+       				CC+='<a id="clr-1" href="javascript:csfc(7);"><img style="border:1px solid #ffffff;" src="https://static1.squarespace.com/static/56f55724d210b839ae597438/574d2942c2ea517f70717850/574d37082fe1312abdefefe9/1464678154126/teak.jpg"></a>';
+        				CC+='</div>';
+    			  	var lmButton=CC+'<div class="sqs-block-button"><div class="sqs-block-button-container--center">';
+    			}
+
+			/************************** EDIT ABOVE HERE FOR PRODUCT COLOR *********************************/
+				lmButton+='<a href="/contact" class="sqs-block-button-element--small sqs-block-button-element">Request Details</a>';
+				lmButton+='</div></div>';
+
+  			$("#pRight").html(lmButton);
+  		}
+  		else {
+  			$("#productDetails .product-price").css('display','block');
+  		//	alert('here');
+  		}
+  });
+  </script>
+{.end}
